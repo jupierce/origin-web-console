@@ -1,5 +1,5 @@
 <overlay-panel show-panel="$ctrl.visible" show-close="true" handle-close="$ctrl.close">
-  <div pf-wizard
+  <pf-wizard
        on-cancel="$ctrl.close()"
        on-finish="$ctrl.close()"
        hide-header="true"
@@ -8,10 +8,11 @@
        next-title="$ctrl.nextButtonTitle"
        next-callback="$ctrl.nextCallback"
        current-step="$ctrl.currentStep"
+       on-step-changed="$ctrl.stepChanged(step)"
        step-class="order-service-wizard-step"
        wizard-done="$ctrl.wizardDone"
        class="pf-wizard-no-back">
-    <div pf-wizard-step
+    <pf-wizard-step
          step-title="Image"
          step-id="image"
          step-priority="1"
@@ -20,7 +21,7 @@
          allow-click-nav="false"
          next-enabled="!$ctrl.deployForm.$invalid">
       <div class="wizard-pf-main-inner-shadow-covers">
-        <div class="order-service-config-single-column">
+        <div class="order-service-config order-service-config-single-column">
           <div class="wizard-pf-main-form-contents">
             <form name="$ctrl.deployForm">
               <deploy-image is-dialog="true" project="$ctrl.project" context="$ctrl.context"></deploy-image>
@@ -28,8 +29,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div pf-wizard-step
+    </pf-wizard-step>
+    <pf-wizard-step
          step-title="Results"
          step-id="results"
          step-priority="2"
@@ -37,7 +38,7 @@
          ok-to-nav-away="true"
          allow-click-nav="false">
       <div class="wizard-pf-main-inner-shadow-covers">
-        <div class="order-service-config-single-column">
+        <div class="order-service-config order-service-config-single-column">
           <div class="wizard-pf-main-form-contents">
             <next-steps project="$ctrl.selectedProject"
                         project-name="$ctrl.selectedProject.metadata.name"
@@ -47,6 +48,6 @@
           </div>
         </div>
       </div>
-    </div> <!-- /pf-wizard-step -->
-  </div> <!-- /pf-wizard -->
+    </pf-wizard-step> <!-- /pf-wizard-step -->
+  </pf-wizard> <!-- /pf-wizard -->
 </overlay-panel>

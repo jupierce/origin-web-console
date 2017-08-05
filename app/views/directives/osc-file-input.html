@@ -31,10 +31,10 @@
       ng-required="required"
       ng-disabled="disabled"
       autocorrect="off"
-      autocapitalize="off"
+      autocapitalize="none"
       spellcheck="false"
       ng-attr-aria-describedby="{{helpText ? helpID : undefined}}">
   </textarea>
 
-  <a href="" ng-show="(model || fileName) && !disabled" ng-click="cleanInputValues()">Clear Value</a>
+  <a href="" ng-show="(model || fileName) && !disabled && !hideClear" ng-click="cleanInputValues()">Clear Value</a>
 </div>

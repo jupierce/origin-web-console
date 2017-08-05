@@ -1,5 +1,5 @@
 <overlay-panel show-panel="$ctrl.visible" show-close="true" handle-close="$ctrl.close" ng-if="$ctrl.project">
-  <div pf-wizard
+  <pf-wizard
        on-cancel="$ctrl.close()"
        on-finish="$ctrl.close()"
        hide-header="true"
@@ -8,8 +8,9 @@
        next-callback="$ctrl.nextCallback"
        current-step="$ctrl.currentStep"
        wizard-done="$ctrl.wizardDone"
+       on-step-changed="$ctrl.stepChanged(step)"
        step-class="order-service-wizard-step">
-    <div pf-wizard-step
+    <pf-wizard-step
          step-title="JSON / YAML"
          step-id="file"
          step-priority="1"
@@ -18,7 +19,7 @@
          allow-click-nav="false"
          next-enabled="!$ctrl.importForm.$invalid">
       <div class="wizard-pf-main-inner-shadow-covers">
-        <div class="order-service-config-single-column">
+        <div class="order-service-config order-service-config-single-column">
           <div class="wizard-pf-main-form-contents">
             <form name="$ctrl.importForm">
               <from-file is-dialog="true" project="$ctrl.project" context="$ctrl.context"></from-file>
@@ -26,8 +27,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div pf-wizard-step
+    </pf-wizard-step>
+    <pf-wizard-step
          wz-disabled="{{!$ctrl.template}}"
          step-title="Template Configuration"
          step-id="template"
@@ -68,8 +69,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div pf-wizard-step
+    </pf-wizard-step>
+    <pf-wizard-step
          step-title="Results"
          step-id="results"
          step-priority="3"
@@ -78,7 +79,7 @@
          allow-click-nav="false"
          prev-enabled="false">
       <div class="wizard-pf-main-inner-shadow-covers">
-        <div class="order-service-config-single-column">
+        <div class="order-service-config order-service-config-single-column">
           <div class="wizard-pf-main-form-contents">
             <!-- We don't want the directive to render until the results step is shown, this makes sure processed template info gets pulled from cache correctly -->
             <next-steps ng-if="$ctrl.currentStep === 'Results'" project="$ctrl.selectedProject"
@@ -89,6 +90,6 @@
           </div>
         </div>
       </div>
-    </div> <!-- /pf-wizard-step -->
-  </div> <!-- /pf-wizard -->
+    </pf-wizard-step> <!-- /pf-wizard-step -->
+  </pf-wizard> <!-- /pf-wizard -->
 </overlay-panel>
